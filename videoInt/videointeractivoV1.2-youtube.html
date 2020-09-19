@@ -1,0 +1,354 @@
+
+
+<DOCUMENT TYPE !HTML>
+
+<HEAd>
+<meta charset = "UTF-8">
+<LINK REL=StyleSheet HREF="cssv1.1.css" TYPE="text/css" MEDIA=screen> 
+<link href="https://fonts.googleapis.com/css?family=Pinyon+Script&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</HEAD>
+<BODY background="log.png">
+
+<h1>Video Interactivo</h1>
+
+<!-- <script src="https://www.youtube.com/iframe_api"></script> -->
+
+<div>
+
+<div id="preguntas" >
+<img id="imagen" src="CHULO1.png" width="80" height="100">
+<video id="vide"  autoplay ></video><br><br>
+<button id="iniciar" type="button" onclick="sigVideo()">Iniciar</button>
+<button id="AM" type="button" onclick="respuesta('A')"></button>
+<button id="BM" type="button" onclick="respuesta('B')"></button>
+<button id="CM" type="button" onclick="respuesta('C')"></button>
+<button id="DM" type="button" onclick="respuesta('D')"></button>
+<button id="EM" type="button" onclick="respuesta('E')"></button>
+<button id="FM" type="button" onclick="respuesta('F')"></button>
+<button id="GM" type="button" onclick="respuesta('G')"></button>
+<button id="HM" type="button" onclick="respuesta('H')"></button>
+<button id="IM" type="button" onclick="respuesta('I')"></button>
+<button id="Aenpantalla" type="button" onclick="respuesta('A')"></button>
+<button id="Benpantalla" type="button" onclick="respuesta('B')"></button>
+<button id="Cenpantalla" type="button" onclick="respuesta('C')"></button>
+<button id="Denpantalla" type="button" onclick="respuesta('D')"></button>
+<button id="falso" type="button" onclick="respuesta('F')">Falso</button>
+<button id="verdadero" type="button" onclick="respuesta('V')">Verdadero</button>
+
+<button id="anterior" type="button" onclick="player.previousVideo()">Anterior</button>
+<button id="ejecutar" type="button" onclick="player.playVideo()">Ejecutar</button>
+<button id="explicacion" type="button" onclick="actualizar()">Explicación</button>
+<button id="pausar" type="button" onclick="player.pauseVideo()">Pausar</button>
+<button id="siguiente" type="button" onclick="player.nextVideo()">Siguiente</button>
+<button id="complementos" type="button" onclick="cargarA()">Complementos</button>
+Yezid Polanía Reina
+</div>
+<div id="respuestas">"Durante el video se realizarán algunas preguntas de control. Ud. Debe responder. Si Ud. responde bien, el video continuará. Pero si responde equivocadamente, será regresado a la sección anterior, para una nueva revisión"
+</div>
+</div>
+<table HIDDEN="true" style="width: 100%;">
+<tbody>
+<tr>
+<td><audio id="sonido4" controls="controls" src="pacman.mp3" class="mediaelement"><a href="pacman.mp3" >audio/mpeg</a></audio></td>
+<td><audio id="sonido1" controls="controls" src="coin.mp3" class="mediaelement"><a href="coin.mp3">audio/mpeg</a></audio></td>
+</tr>
+<tr>
+<td><audio id="sonido2" controls="controls" src="doorbell.mp3" class="mediaelement"><a href="doorbell.mp3">audio/mpeg</a></audio></td>
+</tr>
+</tbody>
+</table>
+<p><img style="display: none;" src="CHULO1.png" width="148" height="228" /><img style="display: none;" src="X1.png" width="200" height="264" /></p>
+
+</BODY>
+
+<script>
+
+/*************************************************************************************************************
+**************************************************************************************************************
+//ESTA ES LA ÚNICA PARTE QUE SE DEBE MODIFICAR// 
+**************************************************************************************************************
+*************************************************************************************************************/
+var preguntas = {"nombreVideoSuyo":"1.mp4","CantidadPreguntas":"3" ,"DatoPregunta":
+
+[{"tipo":"1","hora":"0","minutos":"1","segundos":"06","respuesta":"c"},
+{"tipo":"2","hora":"0","minutos":"2","segundos":"19","respuesta":"H"},
+{"tipo":"3","hora":"0","minutos":"2","segundos":"55","respuesta":"V"},
+{"tipo":"1","hora":"0","minutos":"3","segundos":"53","respuesta":"A"},
+{"tipo":"1","hora":"0","minutos":"15","segundos":"54","respuesta":"D"},
+
+{"tipo":"1","hora":"0","minutos":"16","segundos":"09","respuesta":"1"},
+{"tipo":"1","hora":"0","minutos":"0","segundos":"0","respuesta":"1"},
+{"tipo":"1","hora":"0","minutos":"0","segundos":"0","respuesta":"1"},
+{"tipo":"1","hora":"0","minutos":"0","segundos":"0","respuesta":"1"},
+{"tipo":"1","hora":"0","minutos":"0","segundos":"0","respuesta":"1"},
+
+],"inicialYoutube":"qERHCjh6Ak4","listaYoutube":"pejr5d6S3Nc,taJ60kskkns,xoLmVFAFjn4"};
+/*************************************************************************************************************
+**************************************************************************************************************
+//FIN DE LO QUE SE DEBE MODIFICAR//
+**************************************************************************************************************
+*************************************************************************************************************/
+
+
+var nombre1;
+var rspst=0;
+var rspstmal=0;
+var t;
+var p=-1;
+var E=preguntas.CantidadPreguntas;
+var eficacacia;
+t = setInterval('verifica_fin()',2000);
+
+
+var tag = document.createElement('script');
+
+function cargarA()
+{
+	botonesyoutube();
+	document.getElementById('complementos').hidden=true;
+	tag.src = "https://www.youtube.com/iframe_api";
+	var firstScriptTag = document.getElementsByTagName('script')[0];
+	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+	  
+}
+
+var player;
+ocultar();
+
+function actualizar(){
+	location.reload();
+	
+	$("iniciar").trigger("click");
+	
+}
+
+function onYouTubeIframeAPIReady() {
+	var listamia= preguntas.listaYoutube;
+    player = new YT.Player('vide', {
+        width: 600,
+        height: 400,
+        videoId: preguntas.inicialYoutube,
+        playerVars: {
+		controls: 0,
+		autoplay: 1,
+		fs:0,
+            color: 'darkblue',
+            playlist: listamia
+        },
+        events: {
+            onReady: initialize
+        }
+    });
+}
+
+function initialize(){
+
+    // Update the controls on load
+    updateTimerDisplay();
+    updateProgressBar();
+
+    // Clear any old interval.
+    clearInterval(time_update_interval);
+
+    // Start interval to update elapsed time display and
+    // the elapsed part of the progress bar every second.
+    time_update_interval = setInterval(function () {
+        updateTimerDisplay();
+        updateProgressBar();
+    }, 1000)
+
+}
+
+// This function is called by initialize()
+function updateTimerDisplay(){
+    // Update current time text display.
+    $('#current-time').text(formatTime( player.getCurrentTime() ));
+    $('#duration').text(formatTime( player.getDuration() ));
+}
+
+function formatTime(time){
+    time = Math.round(time);
+
+    var minutes = Math.floor(time / 60),
+    seconds = time - minutes * 60;
+
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    return minutes + ":" + seconds;
+}
+$('#progress-bar').on('mouseup touchend', function (e) {
+
+    // Calculate the new time for the video.
+    // new time in seconds = total duration in seconds * ( value of range input / 100 )
+    var newTime = player.getDuration() * (e.target.value / 100);
+
+    // Skip video to new time.
+    player.seekTo(newTime);
+
+});
+// This function is called by initialize()
+function updateProgressBar(){
+    // Update the value of our progress bar accordingly.
+    $('#progress-bar').val((player.getCurrentTime() / player.getDuration()) * 100);
+}
+
+$('#play').on('click', function () {
+    player.playVideo();
+});
+
+$('#pause').on('click', function () {
+    player.pauseVideo();
+});
+$('#mute-toggle').on('click', function() {
+    var mute_toggle = $(this);
+
+    if(player.isMuted()){
+        player.unMute();
+        mute_toggle.text('volume_up');
+    }
+    else{
+        player.mute();
+        mute_toggle.text('volume_off');
+    }
+});
+$('#volume-input').on('change', function () {
+    player.setVolume($(this).val());
+});
+$('#speed').on('change', function () {
+    player.setPlaybackRate($(this).val());
+});
+$('#next').on('click', function () {
+    player.nextVideo()
+});
+
+$('#prev').on('click', function () {
+    player.previousVideo()
+});
+
+
+function respuesta(z){
+	if ( preguntas.DatoPregunta[p+1].respuesta.toUpperCase()==z){
+		p=p+1;
+		sonidos(1);
+		rspst=rspst+1;
+		document.getElementById('respuestas').innerHTML="Su respuesta es correcta, lleva " + rspst + " bien y " + rspstmal + " mal. Eficacia=" + parseInt(rspst*1000/E)/10;
+		document.getElementById('imagen').src="CHULO1.png";
+		document.getElementById('imagen').hidden=false;
+	}
+	else{
+		rspstmal=rspstmal+1;
+		sonidos(4);
+		document.getElementById('respuestas').innerHTML="Debe prestar más atención. lleva " + rspst + " bien y " + rspstmal + " mal. Eficacia=" + parseInt(rspst*1000/E)/10;
+		document.getElementById('imagen').src="X1.png";
+		document.getElementById('imagen').hidden=false;
+	};
+	sigVideo();
+	document.getElementById('respuestas').hidden=false;
+}
+
+function sigVideo() {
+	var min;
+	ocultar();
+	if(p<=-1){min=0;p=-1;
+	document.getElementById('respuestas').hidden=true;
+	}
+	else{min=parseInt(preguntas.DatoPregunta[p].minutos*60) + parseInt(preguntas.DatoPregunta[p].segundos);}
+	var min1=parseInt(preguntas.DatoPregunta[p+1].minutos*60) + parseInt(preguntas.DatoPregunta[p+1].segundos);
+	nombre1= preguntas.nombreVideoSuyo + "#t=" + min +","+ min1;
+	document.getElementById('vide').src= nombre1;
+	document.getElementById('vide').innerHTML.controls="false"; 
+	document.getElementById('vide').play();
+}
+
+function sonidos(son){
+	document.getElementById("sonido"+son).play();
+}
+
+function ocultar(){
+		
+		document.getElementById('Aenpantalla').hidden=true;
+		document.getElementById('Benpantalla').hidden=true;
+		document.getElementById('Cenpantalla').hidden=true;
+		document.getElementById('Denpantalla').hidden=true;
+		
+		document.getElementById('falso').hidden=true;
+		document.getElementById('verdadero').hidden=true;
+		
+
+		document.getElementById('AM').hidden=true;
+		document.getElementById('BM').hidden=true;
+		document.getElementById('CM').hidden=true;
+		document.getElementById('DM').hidden=true;
+		document.getElementById('EM').hidden=true;
+		document.getElementById('FM').hidden=true;
+		document.getElementById('GM').hidden=true;
+		document.getElementById('HM').hidden=true;
+		document.getElementById('IM').hidden=true;
+		
+		document.getElementById('siguiente').hidden=true;
+		document.getElementById('anterior').hidden=true;
+		document.getElementById('ejecutar').hidden=true;
+		document.getElementById('pausar').hidden=true;
+		document.getElementById('explicacion').hidden=true;
+		document.getElementById('complementos').hidden=true;
+}
+
+function mostrar(){
+	sonidos(2);
+	if (preguntas.DatoPregunta[p+1].tipo==1){
+		document.getElementById('Aenpantalla').hidden=false;
+		document.getElementById('Benpantalla').hidden=false;
+		document.getElementById('Cenpantalla').hidden=false;
+		document.getElementById('Denpantalla').hidden=false;
+		}
+	if (preguntas.DatoPregunta[p+1].tipo==2){
+		document.getElementById('AM').hidden=false;
+		document.getElementById('BM').hidden=false;
+		document.getElementById('CM').hidden=false;
+		document.getElementById('DM').hidden=false;
+		document.getElementById('EM').hidden=false;
+		document.getElementById('FM').hidden=false;
+		document.getElementById('GM').hidden=false;
+		document.getElementById('HM').hidden=false;
+		document.getElementById('IM').hidden=false;
+	}
+	if (preguntas.DatoPregunta[p+1].tipo==3){
+		document.getElementById('falso').hidden=false;
+		document.getElementById('verdadero').hidden=false;
+	}
+}
+
+function botonesyoutube(){
+		
+		document.getElementById('complementos').hidden=false;
+		document.getElementById('siguiente').hidden=false;
+		document.getElementById('anterior').hidden=false;
+		document.getElementById('ejecutar').hidden=false;
+		document.getElementById('pausar').hidden=false;
+		document.getElementById('explicacion').hidden=false;
+}
+function verifica_fin(){
+	if (document.getElementById('vide').ended){
+		p=-1;
+		ocultar();
+		document.getElementById('complementos').hidden=false;
+		document.getElementById('iniciar').hidden=true;
+		rspst=0;
+		rspstmal=0;
+		clearInterval(t);
+	}
+	else{
+	if(document.getElementById('vide').paused==true){
+		mostrar();
+	}
+	else{
+		ocultar();
+	}
+	document.getElementById('imagen').hidden=true;
+	}
+}
+
+
+</script>
+</DOCUMENT>

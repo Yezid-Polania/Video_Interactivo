@@ -1,0 +1,354 @@
+
+body{
+	/*background-color:#172857;
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#1c1b17+0,0984fb+100 */
+/*background: #1c1b17; 
+background: -moz-linear-gradient(-45deg,  #1c1b17 0%, #0984fb 100%); 
+background: -webkit-linear-gradient(-45deg,  #1c1b17 0%,#0984fb 100%); 
+background: linear-gradient(135deg,  #1c1b17 0%,#0984fb 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1c1b17', endColorstr='#0984fb',GradientType=1 ); */
+/*background: #fff;*/
+	  background-repeat: repeat;
+  background-position: 0px;
+}
+p{
+	background-color:94A2B4;
+	text-align: center;
+}
+h1
+{
+
+	font-family: 'Pinyon Script', cursive;
+	text-align:center;
+	color: white;
+	font-weight:normal;
+	font-size:40pt;
+	background-color:#246369; 
+	border-radius: 15px;
+	
+}
+video{
+	margin: auto auto;
+
+width:100%;
+z-index:1;
+}
+img#imagen
+{
+	position:absolute;
+	top:32%;
+	left:43%;
+	padding:5px;
+	opacity:1;
+}
+
+div#preguntas
+{
+	position:absolute;
+	left:23%;
+	width:50%;
+	margin: auto auto;
+	padding:10px;
+	background-color:#020B23;
+	font-family: 'Pinyon Script', cursive;
+	font-weight:normal;
+	font-size:16pt;
+	color:#fff;
+	text-align: center;
+	border-radius: 15px;
+	box-shadow:inset 0 0 5px #000;
+}
+div#respuestas
+{
+	position:absolute;
+	left:36%;
+	
+	width:25%;
+	
+	margin: auto auto;
+	padding:10px;
+	background-color:#00305E;
+	font-family:'century gothic';
+	font-weight:normal;
+	font-size:11pt;
+	color:#fff;
+	text-align: justify;
+	border-radius: 10px;
+	box-shadow:inset 0 0 5px #000;
+	opacity:0.8;
+}
+
+button#pausar{
+	width:80px;
+	height:30px;
+	background-color:#000511;
+	color:white;
+	font-size:14px;
+	border-radius: 5px;
+	font-family:'century gothic';
+	opacity:1;
+	cursor: pointer;
+}
+button#ejecutar{
+	width:80px;
+	height:30px;
+	background-color:#000511;
+	color:white;
+	font-size:14px;
+	border-radius: 5px;
+	font-family:'century gothic';
+	opacity:1;
+	cursor: pointer;
+}
+button#siguiente{
+	width:80px;
+	height:30px;
+	background-color:#132556;
+	color:white;
+	font-size:14px;
+	font-family:'century gothic';
+	border-radius: 5px;
+	opacity:1;
+	cursor: pointer;
+}
+button#anterior{
+	width:80px;
+	height:30px;
+	background-color:#132556;
+	color:white;
+	font-size:14px;
+	font-family:'century gothic';
+	border-radius: 5px;
+	opacity:1;
+	cursor: pointer;
+}
+button#explicacion{
+	width:100px;
+	background-color:#013034;
+	height:30px;
+	color:white;
+	font-size:14px;
+	font-family:'century gothic';
+	border-radius: 5px;
+	opacity:1;
+	cursor: pointer;
+}
+button#complementos{
+	width:200px;
+	height:30px;
+	background-color:#0E494F;
+	color:white;
+	font-size:14px;
+	font-family:'century gothic';
+	border-radius: 5px;
+	opacity:1;
+	cursor: pointer;
+}
+button#a{
+	width:30px;
+	height:30px;
+	background-color:#ffb70d;
+	color:white;
+	font-size:16px;
+	border-radius: 5px;
+	font-family:'century gothic';
+	opacity:1;
+	cursor: pointer;
+}
+button#b{
+	width:30px;
+	height:30px;
+	background-color:#5714a4;
+	color:white;
+	font-size:16px;
+	font-family:'century gothic';
+	border-radius: 5px;
+	opacity:1;
+	cursor: pointer;
+}
+button#c{
+	width:30px;
+	height:30px;
+	background-color:#261ea9;
+	color:white;
+	font-size:16px;
+	font-family:'century gothic';
+	border-radius: 5px;
+	opacity:1;
+	cursor: pointer;
+}
+button#d{
+	width:30px;
+	height:30px;
+	background-color:#0E494F;
+	color:white;
+	font-size:16px;
+	font-family:'century gothic';
+	border-radius: 5px;
+	opacity:1;
+	cursor: pointer;
+}
+button#iniciar{
+	width:70px;
+	height:30px;
+	background-color:#0E494F;
+	color:white;
+	font-family:'century gothic';
+	font-size:16px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+button#AM{
+	position: absolute;
+	top:26%;
+	left:44%;
+	width:100px;
+	height:65px;
+	background-color:#fff;
+	opacity:0;
+	cursor: pointer;
+	}
+	button#BM{
+	position: absolute;
+	top:26%;
+	left:60%;
+	width:100px;
+	height:65px;
+	background-color:#fff;
+	opacity:0;
+	cursor: pointer;
+	}
+	button#CM{
+	position: absolute;
+	top:26%;
+	left:76%;
+	width:100px;
+	height:65px;
+	background-color:#fff;
+	opacity:0;
+	cursor: pointer;
+	}
+	button#DM{
+	position: absolute;
+	top:43%;
+	left:44%;
+	width:100px;
+	height:65px;
+	background-color:#fff;
+	opacity:0;
+	cursor: pointer;
+	}
+	button#EM{
+	position: absolute;
+	top:43%;
+	left:60%;
+	width:100px;
+	height:65px;
+	background-color:#fff;
+	opacity:0;
+	cursor: pointer;
+	}
+	button#FM{
+	position: absolute;
+	top:43%;
+	left:76%;
+	width:100px;
+	height:65px;
+	background-color:#fff;
+	opacity:0;
+	cursor: pointer;
+	}
+	button#GM{
+	position: absolute;
+	top:60%;
+	left:44%;
+	width:100px;
+	height:65px;
+	background-color:#fff;
+	opacity:0;
+	cursor: pointer;
+	}
+	button#HM{
+	position: absolute;
+	top:60%;
+	left:60%;
+	width:100px;
+	height:65px;
+	background-color:#fff;
+	opacity:0;
+	cursor: pointer;
+	}
+	button#IM{
+	position: absolute;
+	top:60%;
+	left:76%;
+	width:100px;
+	height:65px;
+	background-color:#fff;
+	opacity:0;
+	cursor: pointer;
+	}
+button#Aenpantalla{
+	position: absolute;
+	top:47%;
+	left:22%;
+	width:200px;
+	height:32px;
+	background-color:#000;
+	opacity:0;
+	cursor: pointer;
+	}
+	button#Benpantalla{
+	position: absolute;
+	top:58%;
+	left:22%;
+	width:200px;
+	height:32px;
+	background-color:#000;
+	opacity:0;
+	cursor: pointer;
+	}
+	button#Cenpantalla{
+	position: absolute;
+	top:47%;
+	left:54%;
+	width:200px;
+	height:32px;
+	background-color:#000;
+	opacity:0;
+	cursor: pointer;
+	}
+	button#Denpantalla{
+	position: absolute;
+	top:58%;
+	left:54%;
+	width:200px;
+	height:32px;
+	background-color:#000;
+	opacity:0;
+	cursor: pointer;
+	}
+	button#falso{
+	position: absolute;
+	top:58%;
+	left:22%;
+	width:200px;
+	height:32px;
+	background-color:#000;
+	color: #fff;
+	opacity:0;
+	font-family:'century gothic';
+	cursor: pointer;
+	}
+	button#verdadero{
+	position: absolute;
+	top:58%;
+	left:54%;
+	width:200px;
+	height:32px;
+	background-color:#000;
+	color: #fff; 
+	opacity:0;
+	font-family:'century gothic';
+	cursor: pointer;
+	}
